@@ -139,10 +139,74 @@ void greece(){
 
 void finland(){
     
+    //cross
+    //horizontal
+    glColor3f(0.0f, 0.207f, 0.501f); //RGB 0 53 128
+    glBegin(GL_QUADS);
+    {
+        glVertex3f(-4.0, -0.7, 0.0);
+        glVertex3f(4.0, -0.7, 0.0);
+        glVertex3f(4.0, 0.7, 0.0);
+        glVertex3f(-4.0, 0.7, 0.0);
+    }
+    glEnd();
+    
+    // vertical
+    glColor3f(0.0f, 0.207f, 0.501f); //RGB 0 53 128
+    glBegin(GL_QUADS);
+    {
+        glVertex3f(-2.0, -2.5, 0.0);
+        glVertex3f(-0.5, -2.5, 0.0);
+        glVertex3f(-0.5, 2.5, 0.0);
+        glVertex3f(-2.0, 2.5, 0.0);
+    }
+    glEnd();
+    
+    //Back
+    glColor3f(1, 1, 1);
+    glBegin(GL_QUADS);
+    {
+        glVertex3f(-4.0, -2.5, 0.0);
+        glVertex3f(4.0, -2.5, 0.0);
+        glVertex3f(4.0, 2.5, 0.0);
+        glVertex3f(-4.0, 2.5, 0.0);
+    }
+    glEnd();
+    
+    
 }
 
 void bahamas(){
+    //Triangle
+    glColor3f(0.0, 0.0, 0.0);
+    glBegin(GL_TRIANGLES);{
+        glVertex3f(-5.0,-2.5,0);
+        glVertex3f(-1,0,0);
+        glVertex3f(-5.0,2.5,0);
+    }
+    glEnd();
     
+    //line
+    glColor3f(1.0f, 0.796f, 0.0); //RGB 249 200 71
+    glBegin(GL_QUADS);
+    {
+        glVertex3f(-5.0, -0.7, 0.0);
+        glVertex3f(5.0, -0.7, 0.0);
+        glVertex3f(5.0, 0.7, 0.0);
+        glVertex3f(-5.0, 0.7, 0.0);
+    }
+    glEnd();
+    
+    // back
+    glColor3f(0, 0.474f, 0.564f);
+    glBegin(GL_QUADS);
+    {
+        glVertex3f(-5.0, -2.5, 0.0);
+        glVertex3f(5.0, -2.5, 0.0);
+        glVertex3f(5.0, 2.5, 0.0);
+        glVertex3f(-5.0, 2.5, 0.0);
+    }
+    glEnd();
 }
 
 void somalia(){
@@ -154,25 +218,25 @@ void keyboard(unsigned char key, int x, int y){
     
     switch (key) {
         case '1':
-            type = 1;
+            type = 1; // japan
             break;
         case '2':
-            type = 2;
+            type = 2; // germany
             break;
         case '3':
-            type = 3;
+            type = 3; //jamaica
             break;
         case '4':
-            type = 4;
+            type = 4; // finland
             break;
         case '5':
-            type = 5;
+            type = 5; // bahamas
             break;
         case '6':
-            type = 6;
+            type = 6; // somalia
             break;
         case '7':
-            type = 7;
+            type = 7; // greece
             break;
     }
     
@@ -231,7 +295,7 @@ void reshape(int x, int y)                                            // Called 
     gluPerspective(40.0, (GLdouble)x / (GLdouble)y, 0.5, 50.0);        // Configure the camera lens aperture.
     glMatrixMode(GL_MODELVIEW);                                        // Go to 3D mode.
     glViewport(0, 0, x, y);                                            // Configure the camera frame dimensions.
-    gluLookAt(0.0, 1.0, 4.0,
+    gluLookAt(0.0, 1.0, 10.0,
               0.0, 0.0, 0.0,
               0.0, 1.0, 0.0);
     display();
