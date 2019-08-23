@@ -211,6 +211,35 @@ void bahamas(){
 
 void somalia(){
     
+    // Star 5 triangulos
+    // Triangle 1
+     glColor3f(1.0, 1.0, 1.0);
+    glBegin(GL_TRIANGLES);{
+        glVertex3f(-0.624,-0.416,0);
+        glVertex3f(0.624,-0.416,0);
+        glVertex3f(0,1.248,0);
+    }
+    glEnd();
+    
+    // Triangle 2
+    
+    
+    // Triangle 3
+    
+    // Triangle 4
+    
+    // Triangle 5
+    
+    //Back
+    glColor3f(0.2f, 0.513f, 0.894f); // RGB 51 131 228
+    glBegin(GL_QUADS);
+    {
+        glVertex3f(-3.75, -2.5, 0.0);
+        glVertex3f(3.75, -2.5, 0.0);
+        glVertex3f(3.75, 2.5, 0.0);
+        glVertex3f(-3.75, 2.5, 0.0);
+    }
+    glEnd();
 }
 
 
@@ -249,7 +278,7 @@ void display()                            // Called for each frame (about 60 tim
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);                // Clear color and depth buffers.
     glLoadIdentity();                                                // Reset 3D view matrix.
-    gluLookAt(0.0, 0.0, 10.0,                                        // Where the camera is.
+    gluLookAt(0.0, 0.0, 20.0,                                        // Where the camera is.
               0.0, 0.0, 0.0,                                        // To where the camera points at.
               0.0, 1.0, 0.0);                                        // "UP" vector.
     
