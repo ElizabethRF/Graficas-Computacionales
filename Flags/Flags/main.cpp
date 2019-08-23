@@ -30,13 +30,35 @@
 #include <stdio.h>
 #include <math.h>
 
+int type; //global variable to select flag
+
 
 void init() // FOR GLUT LOOP
 {
+    type = 0;
     glEnable(GL_DEPTH_TEST);            // Enable check for close and far objects.
     glClearColor(0.0, 0.0, 0.0, 0.0);    // Clear the color state.
     glMatrixMode(GL_MODELVIEW);            // Go to 3D mode.
     glLoadIdentity();                    // Reset 3D view matrix.
+}
+
+void drawFilledCircle(GLfloat x, GLfloat y, GLfloat z, GLfloat radius){
+    int i;
+    int triangleAmount = 20; //# of triangles used to draw circle
+    
+    //GLfloat radius = 0.8f; //radius
+    GLfloat twicePi = 2.0f * 3.1416;
+    
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex3f(x, y, z); // center of circle
+    for(i = 0; i <= triangleAmount;i++) {
+        glVertex3f(
+                   x + (radius * cos(i *  twicePi / triangleAmount)),
+                   y + (radius * sin(i * twicePi / triangleAmount)),
+                   z
+                   );
+    }
+    glEnd();
 }
 
 
@@ -62,6 +84,103 @@ void axes(float scale)
 
 
 
+void germany(){
+    glColor3f(0, 0, 0);
+    glRects(-10,5,10,1.5f);
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glRects(-10,1.5f,10,-1.5f);
+    glColor3f(1.0f, 1.0f, 0.0f);
+    glRects(-10,-1.5f,10,-4);
+}
+
+void japan(){
+    glColor3f(1, 1, 1);
+    glRects(-10,5,10,-4);
+    glColor3f(1,0,.12f);
+    drawFilledCircle(0,0,1,1);
+}
+
+
+void jamaica(){
+    glColor3f(1, 1, 0);
+    glRects(-10,5,10,-4);
+    glColor3f(0.25f, 0.4f, 0.3f);
+    glBegin(GL_TRIANGLES);{
+        glVertex3f(-9.5f,5,1);
+        glVertex3f(9.5f,5,1);
+        glVertex3f(0,1,1);
+    }
+    glEnd();
+    glBegin(GL_TRIANGLES);{
+        glVertex3f(-9.5f,-5,1);
+        glVertex3f(9.5f,-5,1);
+        glVertex3f(0,-1,1);
+    }
+    glEnd();
+    glColor3f(0, 0, 0);
+    glBegin(GL_TRIANGLES);{
+        glVertex3f(-10,4.5f,1);
+        glVertex3f(-10,-4.5f,1);
+        glVertex3f(-1,0,1);
+    }
+    glEnd();
+    glBegin(GL_TRIANGLES);{
+        glVertex3f(10,4.5f,1);
+        glVertex3f(10,-4.5f,1);
+        glVertex3f(1,0,1);
+    }
+    glEnd();
+}
+
+
+void greece(){
+    
+}
+
+void finland(){
+    
+}
+
+void bahamas(){
+    
+}
+
+void somalia(){
+    
+}
+
+
+void keyboard(unsigned char key, int x, int y){
+    
+    switch (key) {
+        case '1':
+            type = 1;
+            break;
+        case '2':
+            type = 2;
+            break;
+        case '3':
+            type = 3;
+            break;
+        case '4':
+            type = 4;
+            break;
+        case '5':
+            type = 5;
+            break;
+        case '6':
+            type = 6;
+            break;
+        case '7':
+            type = 7;
+            break;
+    }
+    
+}
+    
+    
+
+
 void display()                            // Called for each frame (about 60 times per second).
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);                // Clear color and depth buffers.
@@ -70,7 +189,33 @@ void display()                            // Called for each frame (about 60 tim
               0.0, 0.0, 0.0,                                        // To where the camera points at.
               0.0, 1.0, 0.0);                                        // "UP" vector.
     
-    axes(5);
+    //axes(5);
+    
+    switch (type) {
+        case 1:
+            japan();
+            break;
+        case 2:
+            germany();
+            break;
+        case 3:
+            jamaica();
+            break;
+        case 4:
+            finland();
+            break;
+        case 5:
+            bahamas();
+            break;
+        case 6:
+            somalia();
+            break;
+        case 7:
+            greece();
+            break;
+    }
+    
+    
     glutSwapBuffers();                                                // Swap the hidden and visible buffers.
 }
 
@@ -100,6 +245,7 @@ int main(int argc, char* argv[])
     glutCreateWindow("CG first program");
     
     init();
+    glutKeyboardFunc(keyboard);
     glutReshapeFunc(reshape);                                        // Reshape CALLBACK function.
     glutDisplayFunc(display);                                        // Display CALLBACK function.
     glutIdleFunc(idle);                                                // Idle CALLBACK function.
