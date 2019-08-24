@@ -44,7 +44,7 @@ void init() // FOR GLUT LOOP
 
 void drawFilledCircle(GLfloat x, GLfloat y, GLfloat z, GLfloat radius){
     int i;
-    int triangleAmount = 20; //# of triangles used to draw circle
+    int triangleAmount = 30; //# of triangles used to draw circle
     
     //GLfloat radius = 0.8f; //radius
     GLfloat twicePi = 2.0f * 3.1416;
@@ -85,56 +85,172 @@ void axes(float scale)
 
 
 void germany(){
+    // black rectangle
     glColor3f(0, 0, 0);
-    glRects(-10,5,10,1.5f);
+    glBegin(GL_QUADS);{
+        glVertex3f(8,1.5,0);
+        glVertex3f(8,4,0);
+        glVertex3f(-8,4,0);
+        glVertex3f(-8,1.5,0);
+    }glEnd();
     glColor3f(1.0f, 0.0f, 0.0f);
-    glRects(-10,1.5f,10,-1.5f);
-    glColor3f(1.0f, 1.0f, 0.0f);
-    glRects(-10,-1.5f,10,-4);
+    glBegin(GL_QUADS);{
+        glVertex3f(8,-1,0);
+        glVertex3f(8,1.5,0);
+        glVertex3f(-8,1.5,0);
+        glVertex3f(-8,-1,0);
+    }glEnd();
+    glColor3f(1.0f, 0.796f, 0.0); //RGB 249 200 71
+    glBegin(GL_QUADS);{
+        glVertex3f(8,-3.5,0);
+        glVertex3f(8,-1,0);
+        glVertex3f(-8,-1,0);
+        glVertex3f(-8,-3.5,0);
+    }glEnd();
 }
 
 void japan(){
     glColor3f(1, 1, 1);
-    glRects(-10,5,10,-4);
+    //Back
+    glColor3f(1, 1, 1);
+    glBegin(GL_QUADS);
+    {
+        glVertex3f(-3.5, -2.5, 0.0);
+        glVertex3f(3.5, -2.5, 0.0);
+        glVertex3f(3.5, 2.5, 0.0);
+        glVertex3f(-3.5, 2.5, 0.0);
+    }
+    glEnd();
     glColor3f(1,0,.12f);
-    drawFilledCircle(0,0,1,1);
+    drawFilledCircle(0,0,1,1.4);
 }
 
 
 void jamaica(){
-    glColor3f(1, 1, 0);
-    glRects(-10,5,10,-4);
-    glColor3f(0.25f, 0.4f, 0.3f);
+    
+    // back yellow
+    glColor3f(1.0f, 0.796f, 0.0); //RGB 249 200 71
+    glBegin(GL_QUADS);{
+        glVertex3f(5,-2.5,0);
+        glVertex3f(5,2.5,0);
+        glVertex3f(-5,2.5,0);
+        glVertex3f(-5,-2.5,0);
+    }glEnd();
+    
+    // green triangles
+    //top
+    glColor3f(0.0, 0.6, 0.17); //  RGB 0 154 44
     glBegin(GL_TRIANGLES);{
-        glVertex3f(-9.5f,5,1);
-        glVertex3f(9.5f,5,1);
-        glVertex3f(0,1,1);
+        glVertex3f(0,0.4,1);
+        glVertex3f(4,2.5,0);
+        glVertex3f(-4,2.5,0);
     }
     glEnd();
+    
+    //down
     glBegin(GL_TRIANGLES);{
-        glVertex3f(-9.5f,-5,1);
-        glVertex3f(9.5f,-5,1);
-        glVertex3f(0,-1,1);
+        glVertex3f(-4,-2.5,0);
+        glVertex3f(4,-2.5,0);
+        glVertex3f(0,-0.4,1);
     }
     glEnd();
+    
+    // black triangles
+    //right
     glColor3f(0, 0, 0);
     glBegin(GL_TRIANGLES);{
-        glVertex3f(-10,4.5f,1);
-        glVertex3f(-10,-4.5f,1);
-        glVertex3f(-1,0,1);
+        
+        glVertex3f(5,-2,0);
+        glVertex3f(5,2,0);
+        glVertex3f(1,0,1);
     }
     glEnd();
+    //left
+    
     glBegin(GL_TRIANGLES);{
-        glVertex3f(10,4.5f,1);
-        glVertex3f(10,-4.5f,1);
-        glVertex3f(1,0,1);
+        glVertex3f(-5,-2,0);
+        glVertex3f(-1,0,1);
+        glVertex3f(-5,2,0);
     }
     glEnd();
 }
 
-
 void greece(){
+    glColor3f(1, 1, 1);
+    glBegin(GL_QUADS);
+     {
+         glVertex3f(-1.5, 2.5, 0.0);
+         glVertex3f(6.5, 2.5, 0.0);
+         glVertex3f(6.5, 3.5, 0.0);
+         glVertex3f(-1.5, 3.5, 0.0);
+     }
+     glEnd();
     
+    glBegin(GL_QUADS);
+    {
+        glVertex3f(-1.5, 0.5, 0.0);
+        glVertex3f(6.5, 0.5, 0.0);
+        glVertex3f(6.5, 1.5, 0.0);
+        glVertex3f(-1.5, 1.5, 0.0);
+    }
+    glEnd();
+    
+    
+    glBegin(GL_QUADS);
+    {
+        glVertex3f(-6.5, -1.5, 0.0);
+        glVertex3f(6.5, -1.5, 0.0);
+        glVertex3f(6.5, -0.5, 0.0);
+        glVertex3f(-6.5, -0.5, 0.0);
+    }
+    glEnd();
+    
+    glBegin(GL_QUADS);
+    {
+        glVertex3f(-6.5, -3.5, 0.0);
+        glVertex3f(6.5, -3.5, 0.0);
+        glVertex3f(6.5, -2.5, 0.0);
+        glVertex3f(-6.5, -2.5, 0.0);
+    }
+    glEnd();
+    
+    // cross
+    // horizontal
+    glBegin(GL_QUADS);
+    {
+        glVertex3f(-6.5, 1.5, 0.0);
+        glVertex3f(-1.5, 1.5, 0.0);
+        glVertex3f(-1.5, 2.5, 0.0);
+        glVertex3f(-6.5, 2.5, 0.0);
+    }
+    glEnd();
+    
+    //vertical
+    glBegin(GL_QUADS);
+    {
+        glVertex3f(-4.5, -0.5, 0.0);
+        glVertex3f(-3.5, -0.5, 0.0);
+        glVertex3f(-3.5, 4.5, 0.0);
+        glVertex3f(-4.5, 4.5, 0.0);
+    }
+    glEnd();
+    
+    //Back
+    glColor3f(0.05f, 0.4f, 0.7f);
+    
+    glBegin(GL_QUADS);
+    {
+        glVertex3f(-6.5, -4.5, 0.0);
+        glVertex3f(6.5, -4.5, 0.0);
+        glVertex3f(6.5, 4.5, 0.0);
+        glVertex3f(-6.5, 4.5, 0.0);
+    }
+    glEnd();
+    
+    
+    
+    
+
 }
 
 void finland(){
@@ -213,22 +329,32 @@ void somalia(){
     
     // Star 5 triangulos
     // Triangle 1
-     glColor3f(1.0, 1.0, 1.0);
+     glColor3f(0.2f, 0.513f, 0.894f); // RGB 51 131 228
     glBegin(GL_TRIANGLES);{
-        glVertex3f(-0.624,-0.416,0);
-        glVertex3f(0.624,-0.416,0);
-        glVertex3f(0,1.248,0);
+        glVertex3f(-0.714,-1.071,0);
+        glVertex3f(0.714,-1.071,0);
+        glVertex3f(0,-0.535,0);
     }
     glEnd();
     
     // Triangle 2
+    glColor3f(1.0, 1.0, 1.0);
+    glBegin(GL_TRIANGLES);{
+        glVertex3f(0,-0.535,0);
+        glVertex3f(1.071,0.3,0);
+        glVertex3f(-1.071,0.3,0);
+    }
+    glEnd();
     
     
     // Triangle 3
-    
-    // Triangle 4
-    
-    // Triangle 5
+    glColor3f(1.0, 1.0, 1.0);
+    glBegin(GL_TRIANGLES);{
+        glVertex3f(-0.714,-1.071,0);
+        glVertex3f(0.714,-1.071,0);
+        glVertex3f(0,1.071,0);
+    }
+    glEnd();
     
     //Back
     glColor3f(0.2f, 0.513f, 0.894f); // RGB 51 131 228
@@ -278,7 +404,7 @@ void display()                            // Called for each frame (about 60 tim
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);                // Clear color and depth buffers.
     glLoadIdentity();                                                // Reset 3D view matrix.
-    gluLookAt(0.0, 0.0, 20.0,                                        // Where the camera is.
+    gluLookAt(0.0, 0.0, 25.0,                                        // Where the camera is.
               0.0, 0.0, 0.0,                                        // To where the camera points at.
               0.0, 1.0, 0.0);                                        // "UP" vector.
     
@@ -307,7 +433,16 @@ void display()                            // Called for each frame (about 60 tim
             greece();
             break;
     }
-    
+    // back
+    glColor3f(0.9, 0.9, 0.9); // 236 236 236
+    glBegin(GL_QUADS);
+    {
+        glVertex3f(-20.0, -20, 0.0);
+        glVertex3f(20.0, -20, 0.0);
+        glVertex3f(20.0, 20, 0.0);
+        glVertex3f(-20.0, 20, 0.0);
+    }
+    glEnd();
     
     glutSwapBuffers();                                                // Swap the hidden and visible buffers.
 }
