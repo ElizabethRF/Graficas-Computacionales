@@ -30,6 +30,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <random>
+#include <cstdlib>
 
 int sideNum;
 char option;
@@ -54,7 +55,16 @@ void keyboard(unsigned char key, int x, int y){
         case 'w':
             option = 'w';
             break;
-        default:
+            
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
             sideNum = (int)key -48;
             break;
         
@@ -90,13 +100,14 @@ void circle(float radius, float xc, float yc, int sides){
             float rad = 0.0174533f * i;
             float x = xc +radius * cos(rad);
             float y = yc +radius * sin(rad);
+            int r = (rand() % 100 + 1)/100;
+            int g = (rand() % 100 + 1)/100;
+            int b = (rand() % 100 + 1)/100;
         
-            
+            glColor3f(r,g,b);
             glBegin(GL_TRIANGLES);
             {
                 glVertex3f(prevX,prevY,0);
-                
-                
                 glVertex3f(x,y,0);
                 // center
                 glVertex3f(xc,yc,0);
@@ -142,7 +153,7 @@ void display()                            // Called for each frame (about 60 tim
               0.0, 1.0, 0.0);                                        // "UP" vector.
     
     //shape
-    glColor3f(1,0,0.12);
+    
     //drawFilledCircle(0,0,1,3,sideNum);
     if(option == 'f'){
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -152,7 +163,7 @@ void display()                            // Called for each frame (about 60 tim
     
     
     circle(2, 0,0,sideNum);
-    glColor3f(1,1,1);
+    
     //drawFilledCircle(0,0,1,3,60);
     circle(2, 0,0,360);
     glutSwapBuffers();                                                // Swap the hidden and visible buffers.
