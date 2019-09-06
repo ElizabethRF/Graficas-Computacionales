@@ -30,6 +30,8 @@
 #include <stdio.h>
 #include <math.h>
 
+int rotate = 0;
+
 
 void init() // FOR GLUT LOOP
 {
@@ -39,6 +41,17 @@ void init() // FOR GLUT LOOP
     glLoadIdentity();                    // Reset 3D view matrix.
 }
 
+void planet(float r, float g, float b, float rotVar, float radius, float translate){
+    glColor3f(r,g,b);
+    glPushMatrix();
+    {
+        
+        glRotatef(rotVar,0,1,0);
+        glTranslatef(translate,0,0);
+        glutWireSphere(radius,20,20);
+    }
+    glPopMatrix();
+}
 
 void axes(float scale)
 {
@@ -66,36 +79,48 @@ void display()                            // Called for each frame (about 60 tim
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);                // Clear color and depth buffers.
     glLoadIdentity();                                                // Reset 3D view matrix.
-    gluLookAt(0.0, 10.0, 10.0,                                        // Where the camera is.
+    gluLookAt(0.0, 0.0, 10.0,                                        // Where the camera is.
               0.0, 0.0, 0.0,                                        // To where the camera points at.
               0.0, 1.0, 0.0);                                        // "UP" vector.
     
-    axes(5);
+    //axes(5);
     // sun
-    glColor3f(1, 1, 0); // yellow
-    glutWireSphere(1.0, 20, 16);
+    planet(1,1,0,rotate,0.5,0); // RGB
     
     // Mercury
-    glColor3f(1, 0, 0); // dark red
+    planet(1, 0, 0,rotate,0.2,1);
     
-    //glutWireSphere(0.5, 36, 36);
     
     // Venus
-    
-    glColor3f(0, 1, 0); // dark green
-    //glutWireSphere(0.5, 36, 36);
+    planet(0, 1, 0,rotate,0.2,2);
     
     // Earth
-    glColor3f(0, 0, 1); // blue
-    //glutWireSphere(0.5, 36, 36);
+    glPushMatrix();
+    {
+        glColor3f(0, 0, 1); // blue
+        glRotatef(rotate , 0, 1, 0);
+        glTranslatef(3,0,0);
+        glutWireSphere(0.3, 36, 36);
+        
+        // Moon
+        glColor3f(1, 1, 0); // grey
+        glRotatef(rotate , 0, 1, 0);
+        glTranslatef(1,0,0);
+        glutWireSphere(0.1, 36, 36);
+        
+        // Satelite
+        glColor3f(1, 1, 0); // clear gray
+        glRotatef(rotate , 0, 1, 0);
+        glTranslatef(1,0,0);
+        glutWireSphere(0.1, 36, 36);
+        
+        
+    }
+    glPopMatrix();
     
-    // Moon
-    glColor3f(1, 1, 0); // grey
-    //glutWireSphere(0.5, 36, 36);
     
-    // Satelite
-    glColor3f(1, 1, 0); // clear gray
-    //glutWireSphere(0.5, 36, 36);
+    
+    
     
     // Mars
     glColor3f(1, 1, 0); // red
@@ -118,7 +143,8 @@ void display()                            // Called for each frame (about 60 tim
 
 void idle()                                                            // Called when drawing is finished.
 {
-    glutPostRedisplay();                                            // Display again.
+    glutPostRedisplay();// Display again.
+    rotate += 1;
 }
 
 void reshape(int x, int y)                                            // Called when the window geometry changes.
