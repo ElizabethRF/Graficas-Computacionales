@@ -41,6 +41,14 @@ Car* car;
 
 
 
+float redColor[3];   // R G B 123 17 22
+float blueColor[3];  // R G B 25 59 166
+float whiteColor[3]; // R G B 1 1 1
+float greyColor[3];  // R G B 105 105 105
+
+ 
+
+
 void init() // FOR GLUT LOOP
 {
     car = new Car();
@@ -52,6 +60,22 @@ void init() // FOR GLUT LOOP
     wheel2 = new Wheel();
     wheel3 = new Wheel();
     wheel4 = new Wheel();
+    
+    redColor[0]=0.48;
+    redColor[1]=0.06;
+    redColor[2]=0.08;
+    
+    blueColor[0]=0.09;
+    blueColor[1]=0.23;
+    blueColor[2]=0.65;
+    
+    whiteColor[0]=1;
+    whiteColor[1]=1;
+    whiteColor[2]=1;
+    
+    greyColor[0]=0.41;
+    greyColor[1]=0.41;
+    greyColor[2]=0.41;
     
     wheel1->color[0] = 1;
     wheel2->color[0] = 1;
@@ -87,14 +111,14 @@ void init() // FOR GLUT LOOP
 
 void axes(float scale)
 {
-    //glLineWidth(3);
+    glLineWidth(3);
     glBegin(GL_LINES);
     {
         glColor3f(1, 0, 0); // red
         glVertex3f(0, 0, 0);
         glVertex3f(scale, 0, 0);
         
-        glColor3f(0, 1, 0); // green
+        glColor3f(redColor[0], redColor[1], redColor[2]); // green
         glVertex3f(0, 0, 0);
         glVertex3f(0, scale, 0);
         
@@ -115,7 +139,7 @@ void display()                            // Called for each frame (about 60 tim
               0.0, 0.0, 0.0,                                        // To where the camera points at.
               0.0, 1.0, 0.0);                                        // "UP" vector.
     
-    //axes(5);
+    axes(5);
     wheel1->draw();
     wheel2->draw();
     wheel3->draw();

@@ -95,7 +95,7 @@ void display()                            // Called for each frame (about 60 tim
         
         glTranslatef(0.5,0,0);
         // 1. Rotate
-        glRotatef(angle2 , 0, 0, 1);
+        glRotatef(angle1 , 0, 0, 1);
         // 2. translate
         glTranslatef(0.5,0,0);
         // 3. Scale
@@ -112,7 +112,7 @@ void display()                            // Called for each frame (about 60 tim
 
 void idle()                                                            // Called when drawing is finished.
 {
-    if(angle1 == 90){
+    if(angle1 == 45){
         increase1 = false;
         angle2-= 1;
         angle1--;
