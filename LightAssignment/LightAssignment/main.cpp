@@ -30,6 +30,20 @@
 #include <stdio.h>
 #include <math.h>
 
+
+/*
+ REAL VALUES
+ 0.4379161175
+ 0.272646312
+ 0.5213739869
+ 
+ OPEN GL VALUES
+ 87
+ 27
+ 102
+ 
+ The values are not equal as the triangle is rotating and color is changing based on the light
+ */
 GLfloat        rotation;
 GLfloat*    mat0_ambient;        //<-------------------------------Material 0 - specular array
 GLfloat*    mat0_diffuse;        //<-------------------------------Material 0 - diffuse array
